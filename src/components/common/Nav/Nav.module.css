@@ -1,0 +1,30 @@
+.nav {
+  width: 100vw;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  background-color: #191a21;
+}
+
+.nav ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  list-style-type: none;
+  gap: 20px;
+}
+
+.nav li {
+  padding: 8px 12px;
+  border-radius: 10px;
+  color: #fff;
+}
+
+.nav li:hover {
+  background-color: #282a36;
+  transition: all 0.3s ease;
+}
+
+.active {
+  background-color: #282a36;
+}
