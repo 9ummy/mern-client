@@ -1,0 +1,29 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form span {
+  font-size: 20px;
+}
+
+.form input,
+.form button {
+  height: 35px;
+  width: 200px;
+  border-radius: 5px;
+}
+
+.form button {
+  background-color: #fff;
+  color: #262626;
+}
+
+.form a {
+  width: fit-content;
+  text-align: center;
+  align-self: center;
+  border-bottom: 1px solid #fff;
+  font-size: 14px;
+}
