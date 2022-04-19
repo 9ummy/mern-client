@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Link from 'next/link';
-import styles from '../../styles/Signin.module.css';
+import styles from '../../styles/User.module.css';
 
 function Signin() {
   const [user, setUser] = useState({
