@@ -21,3 +21,7 @@ input,
 button {
   border: 0;
 }
+
+input::placeholder {
+  padding-left: 8px;
+}
