@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
+import { useDispatch } from 'react-redux';
+import { userActions } from '../../redux/reducers/userReducer.ts';
 import styles from '../../styles/User.module.css';
 
 function Signup() {
@@ -13,15 +15,30 @@ function Signup() {
     address: '',
   });
 
+  const dispatch = useDispatch();
+
   const handleChange = (e) => {
     e.preventDefault();
-    alert('Signup clicked');
     const { name, value } = e.target;
     setUser({ ...user, [name]: value });
   };
 
   return (
-    <form className={styles.form}>
+    <form
+      className={styles.form}
+      onSubmit={(e) => {
+        e.preventDefault();
+        dispatch(userActions.signupRequest(user));
+        setUser({
+          userid: '',
+          password: '',
+          email: '',
+          name: '',
+          phone: '',
+          birth: '',
+          address: '',
+        });
+      }}>
       <span>회원가입</span>
       <input
         type='text'
