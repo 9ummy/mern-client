@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
+import Link from 'next/link';
 
 function Board() {
-  const columns = ['순위', '게임 제목', '역대 최다 동시 접속자 수'];
+  const columns = ['순위', '제목', '역대 최다 동시 접속자 수'];
   const [data, setData] = useState([]);
 
   const dispatch = useDispatch();
@@ -38,11 +39,13 @@ function Board() {
           </tr>
         ) : (
           data.map((game) => (
-            <tr key={game._id}>
-              <td>{game.rank}</td>
-              <td>{game.name}</td>
-              <td>{game.allTimePeak}</td>
-            </tr>
+            <Link href={`/board/${game.id}`} key={game._id}>
+              <tr>
+                <td>{game.rank}</td>
+                <td>{game.name}</td>
+                <td>{game.allTimePeak}</td>
+              </tr>
+            </Link>
           ))
         )}
       </tbody>
