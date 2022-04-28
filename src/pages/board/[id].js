@@ -54,6 +54,19 @@ function Post() {
       .catch((err) => console.log(err));
   };
 
+  const handleDelete = (e) => {
+    e.preventDefault();
+    const isConfirmed = confirm('정말 삭제하시겠습니까?');
+    if (isConfirmed) {
+      axios
+        .delete(`http://localhost:5000/game/${id}`)
+        .then((res) => {
+          if (res.data.deletedCount === 1) router.push('/board');
+        })
+        .catch((err) => console.log(err));
+    }
+  };
+
   return (
     <div>
       {data && (
@@ -103,7 +116,7 @@ function Post() {
         </>
       )}
       <button onClick={() => setIsModifying(true)}>수정하기</button>
-      <button>삭제하기</button>
+      <button onClick={handleDelete}>삭제하기</button>
     </div>
   );
 }
