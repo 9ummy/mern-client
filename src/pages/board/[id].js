@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 import axios from 'axios';
 
@@ -70,53 +71,47 @@ function Post() {
   return (
     <div>
       {data && (
-        <table>
-          <thead>
-            <tr>
-              <th>
-                <h1>게임 정보</h1>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>순위</td>
-              <td>제목</td>
-              <td>역대 최다 동시 접속자 수</td>
-            </tr>
-            <tr>
-              <td>{data.rank}</td>
-              <td>{data.name}</td>
-              <td>{data.allTimePeak}</td>
-            </tr>
-          </tbody>
-        </table>
+        <div>
+          <Image src={data.imageUrl} alt={data.name} width={120} height={45} />
+          {isModifying ? (
+            <>
+              <h3>순위</h3>
+              <input
+                name='rank'
+                value={inputs.rank}
+                type='number'
+                onChange={handleChange}
+              />
+              <h3>제목</h3>
+              <input
+                name='name'
+                value={inputs.name}
+                type='text'
+                onChange={handleChange}
+              />
+              <h3>최다 동시 접속자 수</h3>
+              <input
+                name='allTimePeak'
+                value={inputs.allTimePeak}
+                type='number'
+                onChange={handleChange}
+              />
+              <button onClick={handleUpdate}>완료</button>
+            </>
+          ) : (
+            <>
+              <h3>순위</h3>
+              <p>{data.rank}</p>
+              <h3>제목</h3>
+              <p>{data.name}</p>
+              <h3>최다 동시 접속자 수</h3>
+              <p>{data.allTimePeak}</p>
+              <button onClick={() => setIsModifying(true)}>수정하기</button>
+              <button onClick={handleDelete}>삭제하기</button>
+            </>
+          )}
+        </div>
       )}
-      {isModifying && data && (
-        <>
-          <input
-            name='rank'
-            value={inputs.rank}
-            type='number'
-            onChange={handleChange}
-          />
-          <input
-            name='name'
-            value={inputs.name}
-            type='text'
-            onChange={handleChange}
-          />
-          <input
-            name='allTimePeak'
-            value={inputs.allTimePeak}
-            type='number'
-            onChange={handleChange}
-          />
-          <button onClick={handleUpdate}>완료</button>
-        </>
-      )}
-      <button onClick={() => setIsModifying(true)}>수정하기</button>
-      <button onClick={handleDelete}>삭제하기</button>
     </div>
   );
 }
