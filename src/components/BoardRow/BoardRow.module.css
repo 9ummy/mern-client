@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+}
+
+.rank {
+  width: 10%;
+}
+
+.imageUrl {
+  width: 25%;
+}
+
+.name {
+  width: 25%;
+}
+
+.allTimePeak {
+  width: 15%;
+}
