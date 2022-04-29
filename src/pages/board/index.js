@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import Link from 'next/link';
+import BoardRow from '../../components/BoardRow/BoardRow.js';
+import styles from '../../../styles/Board.module.css';
 
 function Board() {
   const columns = ['순위', '제목', '역대 최다 동시 접속자 수'];
@@ -19,37 +21,28 @@ function Board() {
   }, []);
 
   return (
-    <table>
-      <thead>
-        <tr>
-          <th colSpan={3}>
-            <h1>게임 순위</h1>
-          </th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          {columns.map((column, idx) => (
-            <td key={idx}>{column}</td>
+    <>
+      {data && (
+        <div>
+          <div className={styles.header}>
+            <h3 className={styles.rank}>순위</h3>
+            <h3 className={styles.imageUrl}>이미지</h3>
+            <h3 className={styles.name}>제목</h3>
+            <h3 className={styles.allTimePeak}>최다 접속자 수</h3>
+          </div>
+          {data.map((game) => (
+            <BoardRow
+              key={game._id}
+              id={game.id}
+              rank={game.rank}
+              imageUrl={game.imageUrl}
+              name={game.name}
+              allTimePeak={game.allTimePeak}
+            />
           ))}
-        </tr>
-        {!data ? (
-          <tr>
-            <td colSpan={6}>데이터가 없습니다.</td>
-          </tr>
-        ) : (
-          data.map((game) => (
-            <Link href={`/board/${game.id}`} key={game._id}>
-              <tr>
-                <td>{game.rank}</td>
-                <td>{game.name}</td>
-                <td>{game.allTimePeak}</td>
-              </tr>
-            </Link>
-          ))
-        )}
-      </tbody>
-    </table>
+        </div>
+      )}
+    </>
   );
 }
 

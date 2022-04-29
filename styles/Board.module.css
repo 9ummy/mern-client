@@ -1,0 +1,22 @@
+.header {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.rank {
+  width: 10%;
+}
+
+.imageUrl {
+  width: 25%;
+}
+
+.name {
+  width: 25%;
+}
+
+.allTimePeak {
+  width: 15%;
+}
