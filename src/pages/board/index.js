@@ -6,7 +6,7 @@ import BoardRow from '../../components/BoardRow/BoardRow.js';
 import styles from '../../../styles/Board.module.css';
 
 function Board() {
-  const columns = ['순위', '제목', '역대 최다 동시 접속자 수'];
+  const columns = ['순위', '제목', '최다 동시 접속자 수'];
   const [data, setData] = useState([]);
 
   const dispatch = useDispatch();

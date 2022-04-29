@@ -3,7 +3,6 @@ import Link from 'next/link';
 import styles from './BoardRow.module.css';
 
 function BoardRow({ id, rank, imageUrl, name, allTimePeak }) {
-  console.log('board row', id, rank, imageUrl, name, allTimePeak);
   return (
     <Link href={`/board/${id}`} passHref>
       <a className={styles.container}>
